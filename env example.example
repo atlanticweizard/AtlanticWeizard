@@ -1,0 +1,68 @@
+# ========================================
+# Atlantic Weizard - Environment Variables
+# ========================================
+# Copy this file to .env and fill in your actual values
+# NEVER commit .env to version control!
+
+# ========================================
+# Database Configuration
+# ========================================
+# For EC2/Standard PostgreSQL:
+DATABASE_URL=postgresql://atlantic_user:your-password@localhost:5432/atlantic_weizard
+
+# For SSL connection (recommended for production):
+# DATABASE_URL=postgresql://atlantic_user:your-password@localhost:5432/atlantic_weizard?sslmode=require
+
+# ========================================
+# Session Security
+# ========================================
+# Generate a strong secret with: openssl rand -base64 32
+# Or use: node -e "console.log(require('crypto').randomBytes(32).toString('base64'))"
+SESSION_SECRET=your-super-secret-session-key-minimum-32-characters
+
+# ========================================
+# PayU Payment Gateway Configuration
+# ========================================
+# Test credentials (safe for development)
+# PAYU_MERCHANT_KEY=cLHbnq
+# PAYU_MERCHANT_SALT=gAATiDecGQBQbSmQnl2yViES9dsEI050
+# PAYU_MODE=TEST
+
+# Production credentials (use these for live payments)
+PAYU_MERCHANT_KEY=your-production-merchant-key
+PAYU_MERCHANT_SALT=your-production-merchant-salt
+PAYU_MODE=LIVE
+
+# PayU Callback URLs (update with your domain)
+PAYU_SUCCESS_URL=https://yourdomain.com/api/checkout/payu-callback/success
+PAYU_FAILURE_URL=https://yourdomain.com/api/checkout/payu-callback/failure
+
+# ========================================
+# Application Configuration
+# ========================================
+BASE_URL=https://yourdomain.com
+PORT=5000
+NODE_ENV=production
+TRUST_PROXY=true
+
+# ========================================
+# Email Configuration (Optional)
+# ========================================
+# Get API key from: https://resend.com
+RESEND_API_KEY=your-resend-api-key-here
+EMAIL_FROM=noreply@yourdomain.com
+
+# ========================================
+# Logging (Optional)
+# ========================================
+# Options: error, warn, info, debug
+LOG_LEVEL=info
+
+# ========================================
+# Notes
+# ========================================
+# 1. Never commit .env file to git
+# 2. Use strong, unique values for all secrets
+# 3. Change SESSION_SECRET for production
+# 4. Test with PAYU_MODE=TEST before switching to LIVE
+# 5. Update BASE_URL and callback URLs with your actual domain
